@@ -1,0 +1,7 @@
+Simple program to generate HTML reports of Trac issues vs source
+files impacted in a project's source repository, using the SVN log
+information.
+
+To match Trac issues with SVN commits, the program assumes that the
+ticket number appear on the first line of the commit message preceded
+by a '#', e.g. "closes ticket #1234 - short description".
