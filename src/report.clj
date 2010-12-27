@@ -8,7 +8,7 @@
 ;; You must not remove this notice, or any other, from this software.
 (ns report
   (:use [report commits subversion reporting]
-        [clojure.contrib.duck-streams :only [spit file-str make-parents]]))
+        [clojure.contrib.duck-streams :only [file-str make-parents]]))
 
 (defn spit-report [path contents]
   (let [f (file-str path)]
@@ -16,11 +16,11 @@
     (spit f contents)))
 
 (defn -main [& args]
-  (if (= 2 (count args))
-    (let [[path-prefix ticket-prefix] args
-          commits (load-commits)
+  (if (= 3 (count args))
+    (let [[log path-prefix ticket-prefix] args
+          commits (load-commits (slurp log))
           impact (ticket->files commits)
           reverse-impact (file->tickets commits)]
       (spit-report "result/report.html" (report-impact impact path-prefix ticket-prefix))
       (spit-report "result/reverse-report.html" (report-reverse-impact reverse-impact path-prefix ticket-prefix)))
-    (println "Usage: <report-cmd> path-prefix ticket-prefix")))
+    (println "Usage: <report-cmd> log-file path-prefix ticket-prefix")))
