@@ -7,7 +7,7 @@
 ;; the terms of this license.
 ;; You must not remove this notice, or any other, from this software.
 (ns report.reporting
-  (:require [clj-html.core :as html]))
+  (:require [hiccup.core :as html]))
 
 (defn report-ticket-link [ticket base-url]
   [:a {:href (str base-url ticket)} (str "#" ticket)])
