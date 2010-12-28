@@ -7,10 +7,10 @@
   <name>impact-report</name>
   <description>Generates an HTML report of Trac tickets vs Subversion files impacted.</description>
   <scm>
-    <connection>scm:git:git://github.com/pcdavid/impact-report.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com/pcdavid/impact-report.git</developerConnection>
-    <tag>53f4db5ea089e1841a9749e7fa6929e0f0633071</tag>
-    <url>http://github.com/pcdavid/impact-report</url>
+    <connection>scm:git:git://github.com/pcdavid/haystack.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/pcdavid/haystack.git</developerConnection>
+    <tag>3b470fcd109d308209f027a8336e36cd142ac844</tag>
+    <url>http://github.com/pcdavid/haystack</url>
   </scm>
   <build>
     <sourceDirectory>src</sourceDirectory>
