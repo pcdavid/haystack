@@ -6,25 +6,29 @@ Currently Haystack only support Subversion log files in XML format as input (see
 
 h2. Installation
 
-@haystack@ is written in "Clojure":http://clojure.org/ and uses "Leiningen":https://github.com/technomancy/leiningen. Make sure Leiningen is installed before proceeding. You do not need to install Clojure explicitly, the appropriate version will be downloaded by Leiningen.
+@haystack@ is written in "Clojure":http://clojure.org/ and uses "Leiningen":https://github.com/technomancy/leiningen. Forst make sure Leiningen is installed before proceeding. You do not need to install Clojure explicitly, the appropriate version will be downloaded by Leiningen. Then, install @haystack@ itself and its dependencies. For now, the only way is to check out the source from Github:
 
-Then, install @haystack@ itself and its dependencies. For now, the only way is to check out the source from Github:
-
-  % git clone git://github.com/pcdavid/haystack.git
-  % cd haystack
-  % lein deps
+<pre>
+% git clone git://github.com/pcdavid/haystack.git
+% cd haystack
+% lein deps
+</pre>
 
 @lein deps@ will download all the dependencies (including Clojure) into the @lib@ directory.
 
 h2. Usage
 
-First, you need to get the Subversion logs from your project. They must be in XML "verbose" format, so as to include the list of files modified by each commit. For example:
+You first need to get the Subversion logs from your project. They must be in XML "verbose" format, which includes the list of files modified by each commit. For example:
 
-  % svn log -v --xml svn://path/to/my/project/trunk > logs.xml
+<pre>
+% svn log -v --xml svn://path/to/my/project/trunk > logs.xml
+</pre>
 
-You can then invoke @haystack@ like this
+You can then invoke @haystack@ like this:
 
-  % lein run report -main logs.xml PATH_PREFIX TICKET_PREFIX
+<pre>
+% lein run report -main logs.xml PATH_PREFIX TICKET_PREFIX
+</pre>
 
 where:
  * PATH_PREFIX is a fixed string to ignore at the beginning of the files' paths. This is useful to avoid noise in the report if your code is stored in a deep hierarchy inside the Subversion repository. Example: /path/to/my/project.
@@ -39,14 +43,16 @@ h2. License
 
 @haystack@ is released under the Eclipse Public License 1.0 (the same as Clojure itself):
 
- Haystack
- Copyright (c) Pierre-Charles David.
- The use and distribution terms for this software are covered by the
- Eclipse Public License 1.0 (http://opensource.org/licenses/eclipse-1.0.php)
- which can be found in the file epl-v10.html at the root of this distribution.
- By using this software in any fashion, you are agreeing to be bound by the terms of this license.
- You must not remove this notice, or any other, from this software.
+<pre>
+Haystack
+Copyright (c) Pierre-Charles David.
+The use and distribution terms for this software are covered by the
+Eclipse Public License 1.0 (http://opensource.org/licenses/eclipse-1.0.php)
+which can be found in the file epl-v10.html at the root of this distribution.
+By using this software in any fashion, you are agreeing to be bound by the terms of this license.
+You must not remove this notice, or any other, from this software.
+</pre>
 
 h2. Notes
 
-The prototype for @haystack@ was a simple Ruby script I developed for my work at "Obeo":http//www.obeo.fr/, and which proved to be quite useful. @haystack@ is a re-implementation from scratch of the same ideas in Clojure. My main goal is to learn Clojure and its ecosystem on a simple but non-trivial problem, so the roadmap for future versions will probably be based on cool ideas and libraries I want to play with more than on real utility.
+The prototype for @haystack@ was a simple Ruby script I developed for my work at "Obeo":http//www.obeo.fr/, and which proved to be quite useful. @haystack@ is a re-implementation from scratch of the same ideas in Clojure an on my personal time. My main goal is to learn Clojure and its ecosystem on a simple but non-trivial problem, so the roadmap for future versions will probably be based on cool ideas and libraries I want to play with more than on real utility.
