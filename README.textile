@@ -1,0 +1,52 @@
+h1. Haystack 
+
+Haystack cross-references SCM history with issue trackers to find out which source changes correspond to which issue/ticket, and vice versa. It can prove very useful when you need to come back to some feature months after it was done to fix a bug, to get a quick glance at which parts of the source code where impacted to implement a feature or fix a bug. In the other way around, it can help highlight parts of the source code which are subject to lots of bugs and/or changes.
+
+Currently Haystack only support Subversion log files in XML format as input (see below), and assumes tickets are referenced in the commit messages using a Trac-like syntax, e.g. "closes ticket #1234 - short description".
+
+h2. Installation
+
+@haystack@ is written in "Clojure":http://clojure.org/ and uses "Leiningen":https://github.com/technomancy/leiningen. Make sure Leiningen is installed before proceeding. You do not need to install Clojure explicitly, the appropriate version will be downloaded by Leiningen.
+
+Then, install @haystack@ itself and its dependencies. For now, the only way is to check out the source from Github:
+
+  % git clone git://github.com/pcdavid/haystack.git
+  % cd haystack
+  % lein deps
+
+@lein deps@ will download all the dependencies (including Clojure) into the @lib@ directory.
+
+h2. Usage
+
+First, you need to get the Subversion logs from your project. They must be in XML "verbose" format, so as to include the list of files modified by each commit. For example:
+
+  % svn log -v --xml svn://path/to/my/project/trunk > logs.xml
+
+You can then invoke @haystack@ like this
+
+  % lein run report -main logs.xml PATH_PREFIX TICKET_PREFIX
+
+where:
+ * PATH_PREFIX is a fixed string to ignore at the beginning of the files' paths. This is useful to avoid noise in the report if your code is stored in a deep hierarchy inside the Subversion repository. Example: /path/to/my/project.
+ * TICKET_PREFIX is the base URL to use to reference a Trac ticket in the report's hyperlinks. Example:
+   http://trac.mycompany.com/my-project/ticket/.
+  
+The resulting files are:
+ * @result/report.html@: a table reporting for each ticket the complete list of files which were modified to fix it.
+ * @result/reverse-report.html@: a table reporting for each file all the tickets which needed to modify it.
+
+h2. License
+
+@haystack@ is released under the Eclipse Public License 1.0 (the same as Clojure itself):
+
+ Haystack
+ Copyright (c) Pierre-Charles David.
+ The use and distribution terms for this software are covered by the
+ Eclipse Public License 1.0 (http://opensource.org/licenses/eclipse-1.0.php)
+ which can be found in the file epl-v10.html at the root of this distribution.
+ By using this software in any fashion, you are agreeing to be bound by the terms of this license.
+ You must not remove this notice, or any other, from this software.
+
+h2. Notes
+
+The prototype for @haystack@ was a simple Ruby script I developed for my work at "Obeo":http//www.obeo.fr/, and which proved to be quite useful. @haystack@ is a re-implementation from scratch of the same ideas in Clojure. My main goal is to learn Clojure and its ecosystem on a simple but non-trivial problem, so the roadmap for future versions will probably be based on cool ideas and libraries I want to play with more than on real utility.
