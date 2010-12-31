@@ -9,7 +9,8 @@
 
 (ns haystack
   (:use [haystack commits subversion reporting]
-        [clojure.contrib.duck-streams :only [file-str make-parents]]))
+        [clojure.contrib.duck-streams :only [file-str make-parents]])
+  (:gen-class))
 
 (defn spit-report [path contents]
   (let [f (file-str path)]
