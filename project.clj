@@ -1,4 +1,4 @@
-(defproject haystack "0.1.0"
+(defproject haystack "0.2.0-SNAPSHOT"
   :description "Cross-references SCM history with issue trackers to
   find out which source changes correspond to which issue/ticket, and
   vice versa."
