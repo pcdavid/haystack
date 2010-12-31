@@ -6,10 +6,10 @@
 ;; By using this software in any fashion, you are agreeing to be bound by
 ;; the terms of this license.
 ;; You must not remove this notice, or any other, from this software.
-
 (ns haystack
   (:use [haystack commits subversion reporting]
         [clojure.contrib.duck-streams :only [file-str make-parents]])
+  (:require [clj-json [core :as json]])
   (:gen-class))
 
 (defn spit-report [path contents]
@@ -23,8 +23,10 @@
 	reverse-impact (file->tickets commits)]
     (spit-report "result/report.html" (report-impact impact project))
     (spit-report "result/reverse-report.html" (report-reverse-impact reverse-impact project))))
-  
+
 (defn -main [& args]
-  (if (= 3 (count args))
-    (haystack-report (zipmap [:history-source :path-prefix :ticket-prefix] args))
-    (println "Usage: <haystack-cmd> log-file path-prefix ticket-prefix")))
+  (if (= 1 (count args))
+    (let [string-config (json/parse-string (slurp (nth args 0)))
+	  config (apply hash-map (flatten (for [[k v] string-config] [(keyword k) v])))]
+      (haystack-report config))
+    (println "Usage: <haystack-cmd> config.json")))
