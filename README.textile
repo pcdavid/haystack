@@ -27,17 +27,26 @@ You first need to get the Subversion logs from your project. They must be in XML
 You can then invoke @haystack@ like this:
 
 <pre>
-% lein run -m haystack logs.xml PATH_PREFIX TICKET_PREFIX
+% lein run -m haystack config.json
 </pre>
 
-where:
- * PATH_PREFIX is a fixed string to ignore at the beginning of the files' paths. This is useful to avoid noise in the report if your code is stored in a deep hierarchy inside the Subversion repository. Example: /path/to/my/project.
- * TICKET_PREFIX is the base URL to use to reference a Trac ticket in the report's hyperlinks. Example:
-   http://trac.mycompany.com/my-project/ticket/.
-  
+where @config.json@ is a JSON file which contains a map of configuration parameters. The parameters are:
+* @history-source@: the path to the Subversion log file;
+* @path-prefix@: a fixed string to ignore at the beginning of the files' paths. This is useful to avoid noise in the report if your code is stored in a deep hierarchy inside the Subversion repository.
+* @ticket-prefix@: the base URL to use to reference a Trac ticket in the report's hyperlinks.
+
+An example @config.json@ file could look like:
+<pre>
+{
+    "history-source": "/local/path/to/subversion-logs.xml",
+    "path-prefix":    "/subversion/path/to/myproject/trunk",
+    "ticket-prefix":  "https://trac.mycompany.com/myproject/ticket/"
+}
+</pre>
+
 The resulting files are:
- * @result/report.html@: a table reporting for each ticket the complete list of files which were modified to fix it.
- * @result/reverse-report.html@: a table reporting for each file all the tickets which needed to modify it.
+* @result/report.html@: a table reporting for each ticket the complete list of files which were modified to fix it.
+* @result/reverse-report.html@: a table reporting for each file all the tickets which needed to modify it.
 
 h2. License
 
