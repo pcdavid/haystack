@@ -15,12 +15,12 @@
 (defn report-file-path [path base-path]
   [:code (.replaceFirst path base-path "")])
 
-(defn report-ticket-impact [[ticket paths] path-prefix ticket-prefix]
+(defn report-ticket-impact [[ticket paths] project]
   [:tr
-   [:td (report-ticket-link ticket ticket-prefix) ]
-   [:td (interpose [:br] (map #(report-file-path % path-prefix) paths))]])
+   [:td (report-ticket-link ticket (:ticket-prefix project)) ]
+   [:td (interpose [:br] (map #(report-file-path % (:path-prefix project)) paths))]])
 
-(defn report-impact [ticket2files path-prefix ticket-prefix]
+(defn report-impact [ticket2files project]
   (html/html
    [:html
     [:head [:title "Files modified by each ticket"] ]
@@ -28,14 +28,14 @@
      [:h1 "Files modified by each ticket"]
      (vec (concat [:table {:border 1}]
                   [[:tr [:th "Ticket"] [:th "Files"]]]
-                  (map #(report-ticket-impact % path-prefix ticket-prefix) (sort ticket2files))))]]))
+                  (map #(report-ticket-impact % project) (sort ticket2files))))]]))
 
-(defn report-file-reverse-impact [[path tickets] path-prefix ticket-prefix]
+(defn report-file-reverse-impact [[path tickets] project]
   [:tr
-   [:td (report-file-path path path-prefix)]
-   [:td (interpose [:span ", "] (map #(report-ticket-link % ticket-prefix) tickets))]])
+   [:td (report-file-path path (:path-prefix project))]
+   [:td (interpose [:span ", "] (map #(report-ticket-link % (:ticket-prefix project)) tickets))]])
 
-(defn report-reverse-impact [file2tickets path-prefix ticket-prefix]
+(defn report-reverse-impact [file2tickets project]
   (html/html
    [:html
     [:head [:title "Tickets impacting each file"] ]
@@ -43,4 +43,4 @@
      [:h2 "Tickets impacting each file"]
      (vec (concat [:table {:border 1}]
                   [[:tr [:th "File"] [:th "Tickets"]]]
-                  (map #(report-file-reverse-impact % path-prefix ticket-prefix) (sort file2tickets))))]]))
+                  (map #(report-file-reverse-impact % project) (sort file2tickets))))]]))
