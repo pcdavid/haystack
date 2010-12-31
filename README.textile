@@ -27,7 +27,7 @@ You first need to get the Subversion logs from your project. They must be in XML
 You can then invoke @haystack@ like this:
 
 <pre>
-% lein run report -main logs.xml PATH_PREFIX TICKET_PREFIX
+% lein run -m haystack logs.xml PATH_PREFIX TICKET_PREFIX
 </pre>
 
 where:

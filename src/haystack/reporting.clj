@@ -6,7 +6,7 @@
 ;; By using this software in any fashion, you are agreeing to be bound by
 ;; the terms of this license.
 ;; You must not remove this notice, or any other, from this software.
-(ns report.reporting
+(ns haystack.reporting
   (:require [hiccup.core :as html]))
 
 (defn report-ticket-link [ticket base-url]

@@ -6,8 +6,9 @@
 ;; By using this software in any fashion, you are agreeing to be bound by
 ;; the terms of this license.
 ;; You must not remove this notice, or any other, from this software.
-(ns report
-  (:use [report commits subversion reporting]
+
+(ns haystack
+  (:use [haystack commits subversion reporting]
         [clojure.contrib.duck-streams :only [file-str make-parents]]))
 
 (defn spit-report [path contents]
@@ -23,4 +24,4 @@
           reverse-impact (file->tickets commits)]
       (spit-report "result/report.html" (report-impact impact path-prefix ticket-prefix))
       (spit-report "result/reverse-report.html" (report-reverse-impact reverse-impact path-prefix ticket-prefix)))
-    (println "Usage: <report-cmd> log-file path-prefix ticket-prefix")))
+    (println "Usage: <haystack-cmd> log-file path-prefix ticket-prefix")))
