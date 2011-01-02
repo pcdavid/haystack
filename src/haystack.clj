@@ -8,8 +8,8 @@
 ;; You must not remove this notice, or any other, from this software.
 (ns haystack
   (:use [haystack commits subversion reporting]
+	[clojure.contrib.json :only [read-json]]
         [clojure.contrib.duck-streams :only [file-str make-parents]])
-  (:require [clj-json [core :as json]])
   (:gen-class))
 
 ;; The default values for optional configuration parameters.
@@ -36,7 +36,6 @@
 
 (defn -main [& args]
   (if (= 1 (count args))
-    (let [string-config (json/parse-string (slurp (nth args 0)))
-	  config (apply hash-map (flatten (for [[k v] string-config] [(keyword k) v])))]
+    (let [config (read-json (slurp (nth args 0)))]
       (haystack-report (merge default-configuration config)))
     (println "Usage: <haystack-cmd> config.json")))

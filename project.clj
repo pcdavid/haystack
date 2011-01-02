@@ -4,7 +4,6 @@
   vice versa."
   :dependencies [[org.clojure/clojure "1.2.0"]
 		 [org.clojure/clojure-contrib "1.2.0"]
-		 [hiccup "0.3.1"]
-		 [clj-json "0.3.1"]]
+		 [hiccup "0.3.1"]]
   :main haystack
   :dev-dependencies [[swank-clojure "1.2.1"]])
