@@ -8,8 +8,9 @@
 ;; You must not remove this notice, or any other, from this software.
 (ns haystack
   (:use [haystack commits subversion reporting]
+	[clojure.java.io :only [make-parents]]
 	[clojure.contrib.json :only [read-json]]
-        [clojure.contrib.duck-streams :only [file-str make-parents]])
+        [clojure.contrib.duck-streams :only [file-str]])
   (:gen-class))
 
 ;; The default values for optional configuration parameters.
