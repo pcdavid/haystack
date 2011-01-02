@@ -12,21 +12,31 @@
   (:require [clj-json [core :as json]])
   (:gen-class))
 
-(defn spit-report [path contents]
-  (let [f (file-str path)]
-    (make-parents f)
-    (spit f contents)))
+;; The default values for optional configuration parameters.
+(def default-configuration {:output-dir "result"})
+
+(defn make-path
+  ([]
+     ".")
+  ([& segments]
+     (when (seq segments)
+       (apply file-str (interleave segments (repeat java.io.File/separator))))))
+
+(defn spit-report [f contents]
+  (make-parents f)
+  (spit f contents))
 
 (defn haystack-report [project]
   (let [commits (load-commits (slurp (:history-source project)))
 	impact (ticket->files commits)
-	reverse-impact (file->tickets commits)]
-    (spit-report "result/report.html" (report-impact impact project))
-    (spit-report "result/reverse-report.html" (report-reverse-impact reverse-impact project))))
+	reverse-impact (file->tickets commits)
+	output (:output-dir project)]
+    (spit-report (make-path output "report.html") (report-impact impact project))
+    (spit-report (make-path output "reverse-report.html") (report-reverse-impact reverse-impact project))))
 
 (defn -main [& args]
   (if (= 1 (count args))
     (let [string-config (json/parse-string (slurp (nth args 0)))
 	  config (apply hash-map (flatten (for [[k v] string-config] [(keyword k) v])))]
-      (haystack-report config))
+      (haystack-report (merge default-configuration config)))
     (println "Usage: <haystack-cmd> config.json")))

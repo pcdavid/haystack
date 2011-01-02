@@ -14,6 +14,9 @@
      - learn about Clojure test libraries
    - [X] publish this roadmap
    - [ ] improve README and/or create a website
+   - [ ] cleanup dependencies
+     - use clojure.contrib.json instead of clj-json
+     - don't use contrib.duck-streams if 1.2 already has what I need
 
 ** Version 0.3 [0/5]
 
