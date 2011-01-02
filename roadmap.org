@@ -1,0 +1,93 @@
+-*- org -*-
+
+* Tentative roadmap
+
+** Version 0.2 [4/7]
+
+   Themes: packaging
+   
+   - [X] use a "haystack" namespace
+   - [X] make it easier to invoke on the command-line
+   - [X] start to abstract a notion of "project", first with just the configuration parameters
+   - [ ] don't hard-code the target directory
+   - [ ] initialize some basic tests
+     - learn about Clojure test libraries
+   - [X] publish this roadmap
+   - [ ] improve README and/or create a website
+
+** Version 0.3 [0/5]
+
+   Themes: code quality and web conversion
+
+   - [ ] improve robustness (error handling and reporting)
+   - [ ] add some internal documentation to functions
+   - [ ] convert into a web application
+     - learn about Ring, Compojure, and the Clojure web libraries ecosystem
+   - [ ] merge both reports into a single one?
+   - [ ] improve tests support
+     - try to find an existing project which uses SVN and Trac
+
+** Version 0.4 [0/2]
+
+   Themes: UI
+
+   - [ ] replace the monolithic report with a query form
+     - produce a result page with only the requested information
+     - keep the possibility to generate the full report
+   - [ ] add a button to "Refresh" the data
+     - dumb reload from scratch for now
+   - [ ] improve the graphical style of the report(s) and pages
+     - learn more about HTML5, CSS
+       
+** Version 0.5 [0/2]
+
+   Themes: architecture and performance
+
+   - [ ] persist the indexed data
+   - [ ] incremental mode
+     - do not reload the whole history every time, just the data since the last refresh
+   - [ ] abstract the different modules
+     - prepare for other backends, e.g. Git/CVS/Hg for commit history,
+       JIRA/Bugzilla for issues
+     - also prepare for better configuration, e.g. how to extract the
+       relevant tickets from a commit
+
+** Version 0.6 [0/2]
+
+   Themes: configuration and administration
+
+   - [ ] administraction interface
+     - definitions of the project parameters
+   - [ ] support simple scheduling of the incremental updates
+
+** Version 1.0 [0/4]
+
+   Themes: polish
+
+   - [ ] user documentation
+   - [ ] add some simple statistics on the main page
+     - number of commits
+       - total/last month/last week/today
+     - number of commiters
+       - total/active this month/this week/today
+     - mean/median/mode number of files changed by each commit
+   - [ ] robustness
+   - [ ] UI polish
+
+** Beyond 1.0
+
+   - add more reports, statistical analysis, metrics, etc. including graphics
+     - learn more about statistics, Incanter
+   - more dynamic interface
+     - learn JavaScript, jQuery & co.
+   - integrate with existing tools
+     - Eclipse, JIRA, Hudson
+   - support branches
+     - e.g. limit searches and reports to certain branches or releases
+   - more sophisticated search critertion
+     - by date, branch, commiter/author, module/path...
+   - more configurable
+     - e.g. allow to ignore some paths which contain automatically
+       generated code
+   - stable and documented SPI to contribute bakcends/analyzers
+   - REST API
