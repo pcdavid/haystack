@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>haystack</groupId>
   <artifactId>haystack</artifactId>
-  <version>0.1.0</version>
+  <version>0.2.1</version>
   <name>haystack</name>
   <description>Cross-references SCM history with issue trackers to
   find out which source changes correspond to which issue/ticket, and
@@ -11,7 +11,7 @@
   <scm>
     <connection>scm:git:git://github.com/pcdavid/haystack.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/pcdavid/haystack.git</developerConnection>
-    <tag>7a2c2306b058b29de19c8cf8bf73c4d3615b17dd</tag>
+    <tag>3d0e1f6741a57872ba26cbd7a7b3a9a5740d590b</tag>
     <url>https://github.com/pcdavid/haystack</url>
   </scm>
   <build>
