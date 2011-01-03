@@ -1,5 +1,5 @@
-(ns report.core-test
-  (:use [report commits subversion] :reload-all)
+(ns haystack.core-test
+  (:use [haystack commits subversion] :reload-all)
   (:use [clojure.test]))
 
 (def single-commit "<?xml version='1.0'?>
