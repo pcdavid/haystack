@@ -2,7 +2,7 @@
 
 * Tentative roadmap
 
-** Version 0.2 [7/8]
+** Version 0.2 [8/8]
 
    Themes: packaging
    
@@ -15,7 +15,7 @@
    - [X] cleanup dependencies
      - [X] use clojure.contrib.json instead of clj-json
      - [X] don't use contrib.duck-streams if 1.2 already has what I need
-   - [ ] initialize some basic tests
+   - [X] initialize some basic tests
      - learn about Clojure test libraries
 
 ** Version 0.3 [0/5]
