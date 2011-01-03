@@ -23,3 +23,16 @@
     (is (= 1 (count (:paths (first commits)))))
     (is (nil? (:ticket (first commits))))
     (is (not (commit-complete? (first commits))))))
+
+(deftest commits
+  (testing "Commits"
+    (testing "consistency detection"
+      (let [no-tickets (struct commit 42 [] "guybrush" "Fixed #1 and #2" ["src/foo.c" "src/foo.h"])
+	    no-paths (struct commit 42 [1 2] "guybrush" "Fixed #1 and #2" [])
+	    no-tickets-nor-paths (struct commit 42 [] "guybrush" "Fixed #1 and #2" [])
+	    full  (struct commit 42 [1 2] "guybrush" "Fixed #1 and #2" ["src/foo.c" "src/foo.h"])]
+	(is (not (commit-complete? no-tickets)))
+	(is (not (commit-complete? no-paths)))
+	(is (not (commit-complete? no-tickets-nor-paths)))
+	(is (commit-complete? full))))))
+
