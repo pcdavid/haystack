@@ -7,14 +7,11 @@
 ;; the terms of this license.
 ;; You must not remove this notice, or any other, from this software.
 (ns haystack
-  (:use [haystack commits subversion reporting]
+  (:use [haystack config commits subversion reporting]
 	[clojure.java.io :only [make-parents]]
 	[clojure.contrib.json :only [read-json]]
         [clojure.contrib.duck-streams :only [file-str]])
   (:gen-class))
-
-;; The default values for optional configuration parameters.
-(def default-configuration {:output-dir "result"})
 
 (defn make-path
   ([]
@@ -37,6 +34,5 @@
 
 (defn -main [& args]
   (if (= 1 (count args))
-    (let [config (read-json (slurp (nth args 0)))]
-      (haystack-report (merge default-configuration config)))
+      (haystack-report (load-configuration (nth args 0)))
     (println "Usage: <haystack-cmd> config.json")))

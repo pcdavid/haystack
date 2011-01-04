@@ -22,10 +22,10 @@
 
    Themes: code quality and web conversion
 
-   - [ ] improve robustness (error handling and reporting)
-   - [ ] add some internal documentation to functions
    - [ ] convert into a web application
      - learn about Ring, Compojure, and the Clojure web libraries ecosystem
+   - [ ] improve robustness (error handling and reporting)
+   - [ ] add some internal documentation to functions
    - [ ] merge both reports into a single one?
    - [ ] improve tests support
      - try to find an existing project which uses SVN and Trac

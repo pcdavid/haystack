@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>haystack</groupId>
   <artifactId>haystack</artifactId>
-  <version>0.2.1</version>
+  <version>0.3.0-SNAPSHOT</version>
   <name>haystack</name>
   <description>Cross-references SCM history with issue trackers to
   find out which source changes correspond to which issue/ticket, and
@@ -11,7 +11,7 @@
   <scm>
     <connection>scm:git:git://github.com/pcdavid/haystack.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/pcdavid/haystack.git</developerConnection>
-    <tag>3d0e1f6741a57872ba26cbd7a7b3a9a5740d590b</tag>
+    <tag>fd155cc465845970bcd4dbec69b32b029c7d191a</tag>
     <url>https://github.com/pcdavid/haystack</url>
   </scm>
   <build>
@@ -56,6 +56,26 @@
       <groupId>org.clojure</groupId>
       <artifactId>clojure-contrib</artifactId>
       <version>1.2.0</version>
+    </dependency>
+    <dependency>
+      <groupId>ring</groupId>
+      <artifactId>ring-core</artifactId>
+      <version>0.3.5</version>
+    </dependency>
+    <dependency>
+      <groupId>ring</groupId>
+      <artifactId>ring-devel</artifactId>
+      <version>0.3.5</version>
+    </dependency>
+    <dependency>
+      <groupId>ring</groupId>
+      <artifactId>ring-jetty-adapter</artifactId>
+      <version>0.3.5</version>
+    </dependency>
+    <dependency>
+      <groupId>compojure</groupId>
+      <artifactId>compojure</artifactId>
+      <version>0.5.3</version>
     </dependency>
     <dependency>
       <groupId>hiccup</groupId>
