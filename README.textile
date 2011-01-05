@@ -6,7 +6,7 @@ Currently Haystack only support Subversion log files in XML format as input (see
 
 h2. Installation
 
-@haystack@ is written in "Clojure":http://clojure.org/ and uses "Leiningen":https://github.com/technomancy/leiningen. Forst make sure Leiningen is installed before proceeding. You do not need to install Clojure explicitly, the appropriate version will be downloaded by Leiningen. Then, install @haystack@ itself and its dependencies. For now, the only way is to check out the source from Github:
+@haystack@ is written in "Clojure":http://clojure.org/ and uses "Leiningen":https://github.com/technomancy/leiningen. First make sure Leiningen is installed before proceeding. You do not need to install Clojure explicitly, the appropriate version will be downloaded by Leiningen. Then, install @haystack@ itself and its dependencies. For now, the only way is to check out the source from Github:
 
 <pre>
 % git clone git://github.com/pcdavid/haystack.git
