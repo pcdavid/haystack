@@ -10,4 +10,5 @@
 		 [compojure "0.5.3"]
 		 [hiccup "0.3.1"]]
   :main haystack
-  :dev-dependencies [[swank-clojure "1.2.1"]])
+  :dev-dependencies [[swank-clojure "1.2.1"]
+		     [marginalia "0.5.0-alpha"]])
